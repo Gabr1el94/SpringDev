@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -13,8 +18,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
+@Entity
 public class Student {
-   private int id;
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   private Long id;
    private String nome;
    private String sobrenome;
    public static List<Student> studentList;
@@ -23,32 +31,7 @@ public class Student {
        studentRepository();
    }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Student other = (Student) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
-    }
-   
-   public Student(int id, String nome, String sobrenome) {
+   public Student(long id, String nome, String sobrenome) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -60,13 +43,13 @@ public class Student {
 
     public Student() {
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+   
+    public void setId(Long id) {
         this.id = id;
+    }
+    
+     public Long getId() {
+        return id;
     }
 
     public String getNome() {
@@ -84,6 +67,7 @@ public class Student {
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
+    
 
    
 }
