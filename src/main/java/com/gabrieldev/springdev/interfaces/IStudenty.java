@@ -6,7 +6,6 @@
 package com.gabrieldev.springdev.interfaces;
 
 import com.gabrieldev.springdev.classes.Student;
-import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -16,8 +15,8 @@ import org.springframework.http.ResponseEntity;
 public interface IStudenty {
     public String home();
     public ResponseEntity<?> listAll();
-    public ResponseEntity<?> getbyID(int id);
-    public ResponseEntity<?> deletebyID(int id);
-    public ResponseEntity<?> updatebyID(Student student,int id);
+    public ResponseEntity<?> getbyID(long id);
+    public ResponseEntity<?> deletebyID(Student student);  
+    public ResponseEntity<?> updatebyID(Student student);
     public ResponseEntity<?> addStudenty(Student student);
 }
